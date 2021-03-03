@@ -1,14 +1,11 @@
-[bind]
-localhost
-
 [loadbalancer]
 localhost
 
 [bootstrap]
-bootstrap.mycluster.example.com ansible_host="192.168.100.110"
+bootstrap.mycluster.example.com
 
 [control_plane]
-master01.mycluster.example.com ansible_host="192.168.100.111"
+master01.mycluster.example.com 
 
 [workers]
-worker01.mycluster.example.com ansible_host="192.168.100.114"
+worker01.mycluster.example.com
