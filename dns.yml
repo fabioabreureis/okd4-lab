@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: bind
   vars:
     domain: example.com
     cluster_name: mycluster
