@@ -1,0 +1,14 @@
+$TTL  1D
+@     IN  SOA dns.{{ cluster_name }}.{{ domain }}. root.{{ domain }}. (
+                2019022400 ; serial
+                3h         ; refresh
+                15         ; retry
+                1w         ; expire
+                3h         ; minimum
+              )
+          IN NS dns.{{ cluster_name }}.{{ domain }}.
+9  IN PTR api.{{ cluster_name }}.{{ domain }}.
+9  IN PTR api-int.{{ cluster_name }}.{{ domain }}.
+110  IN PTR bootstrap.{{ cluster_name }}.{{ domain }}.
+111 IN PTR master01.{{ cluster_name }}.{{ domain }}.
+114 IN PTR worker01.{{ cluster_name }}.{{ domain }}.

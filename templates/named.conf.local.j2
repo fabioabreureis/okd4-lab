@@ -1,0 +1,14 @@
+zone "{{ domain }}" IN {
+    type master;
+    file "/etc/named/zones/db.{{ domain }}.db";
+    allow-update { none; };
+};
+
+
+zone "{{ rev_domain }}" IN {
+    type master;
+    file "/etc/named/zones/db.{{ domain }}.reverse.db";
+    allow-update { none; };
+};
+
+

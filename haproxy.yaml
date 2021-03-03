@@ -1,0 +1,42 @@
+---
+- name: Install HAProxy
+  hosts: loadbalancer
+  become: true
+  become_user: root
+  vars:
+    cluster_name: mycluster.example.com
+    packages:
+      - haproxy
+      - policycoreutils-python-utils
+
+  tasks:
+    - name: Install Packages (yum)
+      yum :
+        name: "{{ packages }}"
+        state: latest
+
+    - name: Allow Haproxy to listen on tcp port 
+      seport:
+        ports: 6443
+        proto: tcp
+        setype: http_port_t
+        state: present
+
+    - name: Allow Haproxy to listen on tcp port 
+      seport:
+        ports: 22623
+        proto: tcp
+        setype: http_port_t
+        state: present
+
+    - name: Update HAProxy config
+      template: 
+        src: templates/haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg 
+        backup: yes
+
+    - name: Enable service haproxy
+      service:
+        name: haproxy
+        enabled: yes
+        state: started

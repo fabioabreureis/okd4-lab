@@ -1,0 +1,17 @@
+
+$TTL  1D
+@     IN  SOA dns.{{ cluster_name }}.{{ domain }}. root.{{ domain }}. (
+                2019022400 ; serial
+                3h         ; refresh
+                15         ; retry
+                1w         ; expire
+                3h         ; minimum
+              )
+              IN NS dns.{{ cluster_name }}.{{ domain }}.
+dns.{{ cluster_name }}      IN A {{ network }}.9
+api.{{ cluster_name }}      IN A {{ network }}.9
+api-int.{{ cluster_name }}  IN A {{ network }}.9
+*.apps.{{ cluster_name }}   IN A {{ network }}.9
+bootstrap.{{ cluster_name }} IN A {{ network }}.110
+master01.{{ cluster_name }} IN A {{ network }}.111
+worker01.{{ cluster_name }} IN A {{ network }}.114
